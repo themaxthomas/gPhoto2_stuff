@@ -19,7 +19,7 @@ else
   echo How many frames?
   read FRAMES
   echo
-  echo Time between frames (in seconds)?
+  echo Seconds between frames?
   read INTER
   clear
   sleep 1
