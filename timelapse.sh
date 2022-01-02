@@ -1,20 +1,37 @@
 #!/bin/bash
 
-cd /home/pi/timelapse_photos
+source timelapse.config
 
-echo Frame count
-read FRAMES
+#cd /home/pi/timelapse_photos
 
-echo How Long
-read INTER
+echo Use defaults? [y/n]
+read DEFAULTS
 
-NOW=$(date +"%m.%d.%Y_%H:%M:%S")
-DIR=$(echo $NOW)_timelapse
-mkdir $DIR
-cd $DIR
-FOLDER=/home/pi/timelapse_photos/$DIR
+if [ $DEFAULTS == 'y' ]
+then
+  clear
+  sleep 1
+  gphoto2 --capture-image-and-download -F $FRAMES  -I $INTER -f $PROJDIR
+else
+  echo Enter full path of project directory.
+  read PROJDIR
+  echo
+  echo How many frames?
+  read FRAMES
+  echo
+  echo Time between frames (in seconds)?
+  read INTER
+  clear
+  sleep 1
+  gphoto2 --capture-image-and-download -F $FRAMES  -I $INTER -f $PROJDIR
+fi
+#NOW=$(date +"%m.%d.%Y_%H:%M:%S")
+#DIR=$(echo $NOW)_timelapse
+#mkdir $NEWDIR
+#cd $DIR
+#FOLDER=/home/pi/timelapse_photos/$DIR
 clear
 
 
 
-gphoto2 --capture-image-and-download -F $FRAMES  -I $INTER -f $FOLDER
+#gphoto2 --capture-image-and-download -F $FRAMES  -I $INTER -f $PROJDIR
