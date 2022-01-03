@@ -40,8 +40,8 @@ timelapse_menu()
 
 		1 - Start capture
 		2 - Stich photos into video
-        3 - Configure
-        4 - Main menu
+       		3 - Configure
+       		4 - Main menu
 
 		0 - exit program
 	"
