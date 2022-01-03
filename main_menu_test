@@ -1,0 +1,60 @@
+#!/bin/bash
+
+press_enter()
+{
+    echo -en "\nPress Enter to continue"
+    read
+    clear
+}
+
+main_menu()
+{
+	selection=
+	until [ "$selection" = "0" ]; do
+		echo "
+		Main Menu
+
+		1 - Timelapse
+		2 - Stream live video
+
+		0 - exit program
+	"
+		echo -n "Enter selection: "
+		read selection
+		echo ""
+		case $selection in
+			1 ) timelapse_menu ; press_enter ;;
+			2 ) stream_menu ; press_enter ;; #Needs to be written
+			0 ) exit ;;
+			* ) echo "Please enter 1, 2, or 0"; press_enter
+		esac
+	done
+}
+
+timelapse_menu()
+{
+	selection=
+	until [ "$selection" = "0" ]; do
+		echo "
+		Timelapse Menu
+
+		1 - Start capture
+		2 - Stich photos into video
+        3 - Configure
+        4 - Main menu
+
+		0 - exit program
+	"
+		echo -n "Enter selection: "
+		read selection
+		echo ""
+		case $selection in
+			1 ) ./timelapse ; press_enter ;;
+			2 ) ./stitch_timelapse ; press_enter ;;  # ls *.jpg > list.txt ; mencoder...
+            3 ) ./configure_timelapse ; press_enter ;;
+            4 ) main_menu ; press_enter ;;
+			0 ) exit ;;
+			* ) echo "Please enter 1, 2, 3, 4, or 0"; press_enter
+		esac
+	done
+}
