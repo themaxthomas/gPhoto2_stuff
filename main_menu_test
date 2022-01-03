@@ -51,8 +51,8 @@ timelapse_menu()
 		case $selection in
 			1 ) ./timelapse ; press_enter ;;
 			2 ) ./stitch_timelapse ; press_enter ;;  # ls *.jpg > list.txt ; mencoder...
-            3 ) ./configure_timelapse ; press_enter ;;
-            4 ) main_menu ; press_enter ;;
+  		        3 ) ./configure_timelapse ; press_enter ;;
+ 		        4 ) main_menu ; press_enter ;;
 			0 ) exit ;;
 			* ) echo "Please enter 1, 2, 3, 4, or 0"; press_enter
 		esac
