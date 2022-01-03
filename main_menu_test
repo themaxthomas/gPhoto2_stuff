@@ -58,3 +58,6 @@ timelapse_menu()
 		esac
 	done
 }
+
+
+main_menu
