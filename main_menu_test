@@ -26,7 +26,7 @@ main_menu()
 		case $selection in
 			1 ) timelapse_menu ; press_enter ;;
 			2 ) stream_menu ; press_enter ;; #Needs to be written
-			0 ) exit ;;
+			0 ) exit ; clear ;;
 			* ) echo "Please enter 1, 2, or 0"; press_enter
 		esac
 	done
