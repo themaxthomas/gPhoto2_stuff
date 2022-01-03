@@ -9,6 +9,7 @@ press_enter()
 
 main_menu()
 {
+	clear
 	selection=
 	until [ "$selection" = "0" ]; do
 		echo "
@@ -33,6 +34,7 @@ main_menu()
 
 timelapse_menu()
 {
+	clear
 	selection=
 	until [ "$selection" = "0" ]; do
 		echo "
