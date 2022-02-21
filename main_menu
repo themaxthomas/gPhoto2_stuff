@@ -61,5 +61,33 @@ timelapse_menu()
 	done
 }
 
+stream_menu()
+{
+	clear
+	selection=
+	until [ "selection" = "0" ]; do
+		echo "
+		Live Stream Menu
+
+		1 - Start stream using defaults
+		2 - Start stream using custom settings
+		3 - Configure defaults
+		4 - Main Menu
+
+		0 - Exit program
+	"
+		echo -n "Enter selection: "
+		read selection
+		echo ""
+		case $selection in
+			1 ) ./stream_dslr_video ; press_enter ;;
+			2 ) ./stream_custom_video ; press_enter ;;
+			3 ) ./configure_stream ; press_enter ;;
+			4 ) main_menu;;
+			0 ) exit ;;
+			* ) echo "Please enter 1, 2, 3, 4, or 0"; press_enter
+		esac
+	done
+}
 
 main_menu
