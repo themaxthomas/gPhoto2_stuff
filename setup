@@ -1,24 +1,24 @@
 clear
-echo "This will install the following packages:
-        gphoto2
-        ffmpeg
-        vlc
-        v4l2
-        mencoder
+
+install()
+{
+	sudo apt install gphoto2 ffmpeg vlc v4l2 mencoder
+}
+
 until [ "$selection" = "n" ]; do
-		echo "
-    This will install the following packages:
+	echo "
+	This will install the following packages:
 		gphoto2
-    ffmpeg
-    vlc
-    v4l2
-    mencoder
+		ffmpeg
+		vlc
+		v4l2
+		mencoder
 "
-	echo -n "Would you like to continue? [y/n "
+	echo -n "Would you like to continue? [y/n] "
 	read selection
 	echo ""
 	case $selection in
-		y, * ) sudo apt install gphoto2 ffmpeg vlc v4l2 mencoder ; press_enter ;;
+		y, * ) install ; press_enter ;;
 		n ) exit ; clear ;;
 	esac
 done
