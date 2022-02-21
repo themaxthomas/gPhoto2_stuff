@@ -14,11 +14,11 @@ until [ "$selection" = "n" ]; do
     v4l2
     mencoder
 "
-		echo -n "Would you like to continue? [y/n "
-		read selection
-		echo ""
-		case $selection in
-			y, * ) sudo apt install gphoto2 ffmpeg vlc v4l2 mencoder ; press_enter ;;
-			n ) exit ; clear ;;
-		esac
-	done
+	echo -n "Would you like to continue? [y/n "
+	read selection
+	echo ""
+	case $selection in
+		y, * ) sudo apt install gphoto2 ffmpeg vlc v4l2 mencoder ; press_enter ;;
+		n ) exit ; clear ;;
+	esac
+done
