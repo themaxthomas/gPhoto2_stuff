@@ -38,6 +38,7 @@ restart()
 
 install_menu()
 {
+	clear
 	until [ "$selection" = "n" ]; do
 		echo "This will install the following packages and their dependencies:
 		gphoto2
@@ -59,6 +60,7 @@ install_menu()
 
 config_menu()
 {
+	clear
 	until [ "$selection" = "n" ]; do
 		echo "Now we will configure the v4l2loopback module to be loaded at each boot
 	"
@@ -72,3 +74,5 @@ config_menu()
 		esac
 	done
 }
+
+install_menu
