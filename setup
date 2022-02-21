@@ -1,3 +1,4 @@
+#!/bin/bash
 clear
 
 press_enter()
@@ -9,23 +10,65 @@ press_enter()
 
 install()
 {
-	sudo apt install gphoto2 ffmpeg vlc v4l2 mencoder
+	clear
+	sudo apt-get install gphoto2 ffmpeg vlc v4l2loopback-utils v4l2loopback-dkms mencoder
+	echo ""
+	press_enter
+	config_menu
 }
 
-until [ "$selection" = "n" ]; do
-	echo "This will install the following packages:
-	gphoto2
-	ffmpeg
-	vlc
-	v4l2
-	mencoder
-"
-	echo -n "Would you like to continue? [y/n] "
-	read selection
-	echo ""
-	case $selection in
-		y ) install ; press_enter ;;
-		n ) exit ; clear ;;
-		* ) echo "Please enter 'y' or 'n'" ; press_enter
-	esac
-done
+configure()
+{
+	clear
+	sudo cat /etc/modules >> /etc/modules-orig
+	sudo echo dslr-webcam >> /etc/modules
+	sudo echo "# Module options for Video4Linux, needed for our DSLR Webcam
+	alias dslr-webcam v4l2loopback
+	options v4l2loopback exclusive_caps=1 max_buffers=2" >> /etc/modprobe.d/dslr-webcam.conf
+	clear
+	echo Setup now complete. System restart required. 
+	press_enter
+	restart
+}
+
+restart()
+{
+	sudo reboot
+}
+
+install_menu()
+{
+	until [ "$selection" = "n" ]; do
+		echo "This will install the following packages and their dependencies:
+		gphoto2
+		ffmpeg
+		vlc
+		v4l2loopback
+		mencoder
+	"
+		echo -n "Would you like to continue? [Y/n] "
+		read selection
+		echo ""
+		case $selection in
+			y|Y|"") install ; press_enter ;;
+			n|N) exit ; clear ;;
+			*) echo "Please enter 'y' or 'n'" ; press_enter
+		esac
+	done
+}
+
+config_menu()
+{
+	until [ "$selection" = "n" ]; do
+		echo "Now we will configure the v4l2loopback module to be loaded at each boot
+	"
+		echo -n "Would you like to continue? [Y/n] "
+		read selection
+		echo ""
+		case $selection in
+			y|Y|"") configure ; press_enter ;;
+			n|N) exit ; clear ;;
+			*) echo "Please enter 'y' or 'n'" ; press_enter
+		esac
+	done
+}
