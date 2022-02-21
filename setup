@@ -1,24 +1,31 @@
 clear
 
+press_enter()
+{
+    echo -en "\nPress Enter to continue"
+    read
+    clear
+}
+
 install()
 {
 	sudo apt install gphoto2 ffmpeg vlc v4l2 mencoder
 }
 
 until [ "$selection" = "n" ]; do
-	echo "
-	This will install the following packages:
-		gphoto2
-		ffmpeg
-		vlc
-		v4l2
-		mencoder
+	echo "This will install the following packages:
+	gphoto2
+	ffmpeg
+	vlc
+	v4l2
+	mencoder
 "
 	echo -n "Would you like to continue? [y/n] "
 	read selection
 	echo ""
 	case $selection in
-		y, * ) install ; press_enter ;;
+		y ) install ; press_enter ;;
 		n ) exit ; clear ;;
+		* ) echo "Please enter 'y' or 'n'" ; press_enter
 	esac
 done
