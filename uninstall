@@ -13,7 +13,7 @@ restart()
 }
 
 
-echo This will remove all gphoto2 related packages and configurations
+echo This will remove all gphoto2 related packages and configurations. It needs to be run as ROOT.
 echo ""
 press_enter
 apt purge gphoto2 ffmpeg vlc v4l2loopback-utils v4l2loopback-dkms mencoder -y
