@@ -1,1 +1,8 @@
+#!/bin/bash
+
+source main_menu
+
 nano timelapse.config
+
+press_enter
+main_menu
