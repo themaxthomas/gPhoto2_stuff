@@ -11,7 +11,7 @@ press_enter()
 install()
 {
 	clear
-	sudo apt-get install gphoto2 ffmpeg vlc v4l2loopback-utils v4l2loopback-dkms mencoder
+	apt-get install gphoto2 ffmpeg vlc v4l2loopback-utils v4l2loopback-dkms mencoder -y
 	echo ""
 	press_enter
 	config_menu
@@ -20,9 +20,9 @@ install()
 configure()
 {
 	clear
-	sudo cat /etc/modules >> /etc/modules-orig
-	sudo echo dslr-webcam >> /etc/modules
-	sudo echo "# Module options for Video4Linux, needed for our DSLR Webcam
+	cat /etc/modules > /etc/modules-orig
+	echo dslr-webcam >> /etc/modules
+	echo "# Module options for Video4Linux, needed for our DSLR Webcam
 	alias dslr-webcam v4l2loopback
 	options v4l2loopback exclusive_caps=1 max_buffers=2" >> /etc/modprobe.d/dslr-webcam.conf
 	clear
@@ -33,7 +33,7 @@ configure()
 
 restart()
 {
-	sudo reboot
+	 reboot
 }
 
 install_menu()
