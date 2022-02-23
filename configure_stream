@@ -1,1 +1,3 @@
+#!/bin/bash
+
 nano stream.config
