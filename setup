@@ -40,6 +40,8 @@ install_menu()
 {
 	clear
 	until [ "$selection" = "n" ]; do
+		echo This needs to be run as ROOT
+		echo ""
 		echo "This will install the following packages and their dependencies:
 		gphoto2
 		ffmpeg
