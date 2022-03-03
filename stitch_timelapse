@@ -1,0 +1,19 @@
+#!/bin/bash
+
+source timelapse.config
+
+echo "$TLDIR"
+
+sleep 5
+
+source $TLDIR/last_timelapse.config
+
+echo "$TLDIR"
+
+cd $TLDIR
+
+ls *.jpg > list.txt
+
+mencoder -nosound -ovc lavc -lavcopts vcodec=mpeg4:aspect=16/9:vbitrate=8000000 -vf scale=640:480 -o timelapse.avi -mf type=jpeg:fps=24 mf://@list.txt
+
+rm last_timelapse.config
